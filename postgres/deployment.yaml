@@ -1,0 +1,48 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mypostgres
+spec:
+  selector:
+    matchLabels:
+      app: mypostgres
+  template:
+    metadata:
+      labels:
+        app: mypostgres
+    spec:
+      # wait for mypostgres to be resolvable
+      # it is resolvable when the service is created
+      # we can use this to run migrations on database
+      # initContainers:
+      #   - name: init-mypostgres
+      #     image: busybox:latest
+      #     command:
+      #       [
+      #         'sh',
+      #         '-c',
+      #         'until nslookup mypostgres; do echo waiting for mypostgres; sleep 2; done;',
+      #       ]
+      containers:
+        - name: mypostgres
+          image: postgres:latest
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: mypostgrespersistentvolume
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          imagePullPolicy: Always
+          livenessProbe:
+            tcpSocket:
+              port: 5432
+          ports:
+            - containerPort: 5432
+          envFrom:
+            - secretRef:
+                name: mypostgressecret
+      volumes:
+        - name: mypostgrespersistentvolume
+          persistentVolumeClaim:
+            claimName: myrancherpersistentvolumeclaim

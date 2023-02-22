@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+  name: myresourcequota
+spec:
+  hard:
+    requests.cpu: '2'
+    requests.memory: 4Gi
+    limits.cpu: '4'
+    limits.memory: 8Gi
+    pods: '10'
+    services: '5'
+    secrets: '5'
+    configmaps: '5'
+    persistentvolumeclaims: '5'
+    requests.storage: 5Gi
+    replicationcontrollers: '2'
+    services.loadbalancers: '2'
+    services.nodeports: '2'
+    requests.nvidia.com/gpu: '0'
+    requests.ephemeral-storage: 5Gi
+    limits.ephemeral-storage: 10Gi
+    requests.infiniband: '0'
+    limits.infiniband: '0'
+    requests.intel.com/fpga: '0'
+    limits.intel.com/fpga: '0'
+    requests.intel.com/pga: '0'
+    limits.intel.com/pga: '0'
+    requests.intel.com/vpu: '0'
+    limits.intel.com/vpu: '0'
+    requests.intel.com/sgx: '0'
+    limits.intel.com/sgx: '0'
+    requests.intel.com/sgx_epc: '0'
+    limits.intel.com/sgx_epc: '0'
+    requests.intel.com/sgx_enclave: '0'
+    limits.intel.com/sgx_enclave: '0'
+    requests.intel.com/sgx_provision: '0'
+    limits.intel.com/sgx_provision: '0'
+    requests.intel.com/sgx_launch: '0'
+    limits.intel.com/sgx_launch: '0'
+    requests.intel.com/sgx_quote: '0'
+    limits.intel.com/sgx_quote: '0'
+    requests.intel.com/sgx_pce: '0'
+    limits.intel.com/sgx_pce: '0'
+    requests.intel.com/sgx_pck_cert: '0'
+    limits.intel.com/sgx_pck_cert: '0'
+    requests.intel.com/sgx_root_cert: '0'
+    limits.intel.com/sgx_root_cert: '0'
+    requests.intel.com/sgx_crl: '0'
+    limits.intel.com/sgx_crl: '0'

@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mypostgresconfigmap
+data:
+  POSTGRES_USER: ecommerce
+  POSTGRES_PASSWORD: ecommerce@2023
+  POSTGRES_DB: ecommerce

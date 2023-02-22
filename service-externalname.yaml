@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservice
+spec:
+  type: ExternalName
+  externalName: mydeployment.default.svc.cluster.local

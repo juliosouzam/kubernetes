@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: myservicehttpd
+spec:
+  type: ExternalName
+  externalName: myservicehttpd.development.svc.cluster.local
